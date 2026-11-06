@@ -31,3 +31,18 @@ jobs:
         run: docker build -t ghcr.io/christa-daccache/ai-agent-docker:latest .
       - name: Push Docker image
         run: docker push ghcr.io/christa-daccache/ai-agent-docker:latest
+  deploy:
+    needs: test
+    runs-on: [self-hosted, ai-agent-deploy]
+    steps:
+      - name: Check Docker on Windows
+        if: runner.os == 'Windows'
+        shell: powershell -NoProfile -ExecutionPolicy Bypass -File {0}
+        run: docker info
+
+      - name: Check Docker on macOS
+        if: runner.os == 'macOS'
+        shell: bash
+        run: docker info
+
+        
