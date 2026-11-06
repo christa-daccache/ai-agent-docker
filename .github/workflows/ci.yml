@@ -76,7 +76,7 @@ jobs:
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
 
-          docker run -d --platform linux/amd64 --name ai-agent-app -e GEMINI_API_KEY -p 127.0.0.1:8000:8000 ghcr.io/christa-daccaches/ai-agent-docker:latest
+          docker run -d --platform linux/amd64 --name ai-agent-app -e GEMINI_API_KEY -p 127.0.0.1:8000:8000 ghcr.io/christa-daccache/ai-agent-docker:latest
           exit $LASTEXITCODE
 
       - name: Deploy on macOS
